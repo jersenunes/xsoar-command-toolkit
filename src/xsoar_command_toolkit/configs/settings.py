@@ -7,6 +7,9 @@ load_dotenv()
 XSOAR_API_KEY = os.getenv('XSOAR_API_KEY')
 XSOAR_BASE_URL = os.getenv('XSOAR_BASE_URL')
 
+if not XSOAR_BASE_URL or not XSOAR_API_KEY:
+    raise RuntimeError("Missing required XSOAR environment variables")
+
 #Set paths
 ROOT_FOLDER = Path(__file__).parent.parent
 OUTPUT = ROOT_FOLDER / 'output'
@@ -14,17 +17,19 @@ EXAMPLES = ROOT_FOLDER / 'examples'
 CERTIFICATE = ROOT_FOLDER / 'certs' / 'cert.pem'
 
 #Set context
-BYPASS_COMMAND = ['Check Health', 'Check Health Containers', 'Logout Myself', 'Logout Everyone']
+HELP_ARGS = ['help', '--help', '-help', '/help', '-h', '--h', 'h', '/h',
+             'cmd=help', 'cmd=--help', 'cmd=-help', 'cmd=/help', 'cmd=-h', 'cmd=--h', 'cmd=h', 'cmd=/h']
+
 USAGE_MESSAGE = "Commands executed without required arguments will be requested via prompt.\n" \
     "Usage Examples:\n" \
     "python main.py cmd=health\n" \
-    "python main.py cmd=logoutmyself\n" \
+    "python main.py logoutmyself\n" \
     "python main.py cmd=logout_everyone\n" \
-    "python main.py cmd=delete_api arg=file_path\n" \
+    "python main.py delete_api file_path\n" \
     "python main.py cmd=create_incident arg=file_path\n" \
-    "python main.py cmd=retrieve_incident arg=file_path\n" \
-    "python main.py cmd=setlist arg=file_path\n" \
-    "python main.py cmd=search_script arg=file_path\n" \
+    "python main.py cmd=retrieve_incident file_path\n" \
+    "python main.py setlist arg=file_path\n" \
+    "python main.py search_script file_path\n" \
     "python main.py cmd=uploadfile arg=file_path\n"
 
 API_COMMANDS = {
@@ -40,6 +45,32 @@ API_COMMANDS = {
     'Search Script': ['search_script', 'searchscript', 'search_automation', 'searchautomation'],
     'Upload File': ['upload_file', 'uploadfile', 'send_file', 'sendfile']
 }
+
+#Set API Commands
+API_COMMANDS_LIST = [
+    'health', 'checkhealth', 'check_health', 'checkhealthcontainers', 'check_health_containers', 'check_containers',
+    'checkcontainers', 'containers', 'container', 'logout_myself', 'logoutmyself', 'logout', 'signout_myself',
+    'signoutmyself', 'signout', 'logout_everyone', 'logouteveryone', 'logout_all', 'logoutall', 'logout_members',
+    'logoutmembers', 'logout_team', 'logoutteam', 'signout_everyone', 'signouteveryone', 'signout_all', 'signoutall',
+    'signout_members', 'signoutmembers', 'signout_team', 'signoutteam', 'revoke_api', 'revokeapi', 'remove_api',
+    'removeapi', 'delete_api', 'deleteapi', 'dell_api', 'dellapi', 'create_incident', 'createincident', 'make_incident',
+    'makeincident', 'new_incident', 'newincident', 'get_incident', 'getincident', 'retrieve_incident', 'retrieveincident',
+    'save_list', 'savelist', 'set_list', 'setlist', 'search_incidents', 'searchincidents', 'search_incs', 'searchincs',
+    'search_script', 'searchscript', 'search_automation', 'searchautomation', 'upload_file', 'uploadfile', 'send_file',
+    'sendfile'
+]
+BYPASS_COMMAND = ['Check Health', 'Check Health Containers', 'Logout Myself', 'Logout Everyone']
+CHECK_HEALTH_COMMAND = 'Check Health'
+CHECK_HEALTH_CONTAINERS_COMMAND = 'Check Health Containers'
+LOGOUT_MYSELF_COMMAND = 'Logout Myself'
+LOGOUT_EVERYONE_COMMAND = 'Logout Everyone'
+REVOKE_API_COMMAND = 'Revoke API'
+CREATE_INCIDENT_COMMAND = 'Create Incident'
+SAVE_LIST_COMMAND = 'Save List'
+GET_INCIDENT_COMMAND = 'Get Incident'
+SEARCH_INCIDENTS_COMMAND = 'Search Incidents'
+SEARCH_SCRIPT_COMMAND = 'Search Script'
+UPLOAD_FILE_COMMAND = 'Upload File'
 
 #Set Lists of questions
 REVOKE_API_QUESTIONS = [

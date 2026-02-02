@@ -1,10 +1,8 @@
-# type: ignore
-from configs.settings import *
-from core.http.client import HTTPClient
-from utils.utils import *
 from pathlib import Path
 from typing import Dict
 
+from xsoar_command_toolkit.configs.settings import XSOAR_BASE_URL, XSOAR_API_KEY, CERTIFICATE
+from xsoar_command_toolkit.http.client import HTTPClient
 
 class CortexXSOAR:
     def __init__(self) -> None:
@@ -52,7 +50,7 @@ class CortexXSOAR:
         return {'Logout Everyone': response}
 
 
-    def revoke_api(self, payload: str) -> Dict | str:
+    def revoke_api(self, payload: Dict) -> Dict | str:
         url = self.__endpoint_url + '/apikeys/revoke/user/' + payload.get('user')
         client = HTTPClient(headers=self.__headers)
 
@@ -70,8 +68,8 @@ class CortexXSOAR:
         return {'Create Incident': response}
 
 
-    def get_incident(self, payload: str) -> Dict | str:
-        url = self.__endpoint_url + '/incident/load/' + payload
+    def get_incident(self, payload: Dict) -> Dict | str:
+        url = self.__endpoint_url + '/incident/load/' + payload.get('id')
         client = HTTPClient(headers=self.__headers)
 
         response = client.get(url=url, verify=self.__certificate)

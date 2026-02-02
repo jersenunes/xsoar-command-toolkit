@@ -1,0 +1,7 @@
+{
+  "IncidentDetails": "208.75.241.246, 1.1.1.1, 8.8.8.8, 84.247.128.226, 1.193.163.2, 45.140.17.124, 103.220.91.138, 73.2.23.148, 167.94.146.77, 45.78.222.39, 80.94.92.164, google.com, chatgpt.com, telegram.org, web.archive.org, smscodeonline.com, tempmailo.com, onetimesecret.com, homevpn.anondns.net, constructionpaco.com, analytics.emtelligent.sbs, http://upx.sf.net, https://nuget.org/nuget.exe, https://constructionpaco.com/work/portal.html, https://gift.greenlight.com/, https://dns.google/dns-query, https://analytics.emtelligent.sbs",
+  "IncidentName": "Brute Force VPN",
+  "IncidentSeverity": 3,
+  "IncidentType": "Unclassified",
+  "IncidentStart": false
+}

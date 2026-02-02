@@ -1,5 +1,6 @@
-from prompting.errors import ValidationError
 from typing import Any
+
+from xsoar_command_toolkit.prompting.errors import ValidationError
 
 def not_empty(value: Any) -> None:
     if value is None:

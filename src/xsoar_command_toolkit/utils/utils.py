@@ -1,8 +1,7 @@
-# type: ignore
 import json
-from configs.settings import *
-from typing import Dict, List
+import os
 from pathlib import Path
+from typing import Dict, List
 
 
 def read_file(path:Path) -> None | List | str:

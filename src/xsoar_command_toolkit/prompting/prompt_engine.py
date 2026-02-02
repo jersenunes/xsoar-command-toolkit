@@ -1,6 +1,7 @@
-# type: ignore
-from typing import List, Dict, Any
-from prompting.validators import not_empty
+from typing import List, Dict
+
+from xsoar_command_toolkit.prompting.validators import not_empty
+
 
 def prompt_engine(questions: List, context: Dict = {}) -> Dict:
     payload = {}

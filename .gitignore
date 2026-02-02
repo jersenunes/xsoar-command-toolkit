@@ -1,0 +1,40 @@
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# Bytecode and cache
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment variables
+.env
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Runtime outputs
+output/
+
+# Secrets and keys
+*.pem

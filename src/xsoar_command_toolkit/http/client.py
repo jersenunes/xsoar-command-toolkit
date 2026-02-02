@@ -2,7 +2,8 @@
 import time
 import requests
 from typing import Dict, Optional
-from .exceptions import HTTPClientError, HTTPTimeoutError, HTTPRateLimitError, HTTPServerError, InvalidAPIKey
+
+from xsoar_command_toolkit.http.exceptions import HTTPClientError, HTTPTimeoutError, HTTPRateLimitError, HTTPServerError, InvalidAPIKey
 
 
 class HTTPClient:
