@@ -28,7 +28,6 @@ def prompt_engine(questions: List, context: Dict = {}) -> Dict:
                     continue
     
             payload.update({key: answer})
-            # print(payload)
     
     return payload
     

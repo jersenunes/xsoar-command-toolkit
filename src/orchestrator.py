@@ -39,7 +39,6 @@ def call_payload_engine(cmd: str, context: Dict = {}) -> bool | Dict:
         payload = prompt_engine(questions=UPLOAD_FILE_QUESTIONS, context=context)
     
     if payload:
-        print(payload)
         return payload_builder(cmd=cmd, payload=payload)
 
     return payload
@@ -105,7 +104,6 @@ def orchestrator(input: List):
             json_file = read_a_json(file_path)
             
         payload = call_payload_engine(cmd=command, context=json_file)
-        print(payload)
 
         if isinstance(payload, Dict) and payload:
             results = call_api_with_payload(cmd=command, body=payload)
@@ -117,5 +115,5 @@ def orchestrator(input: List):
             normalize_json(results)
                 
     except:
-        #print(USAGE_MESSAGE)
+        print(USAGE_MESSAGE)
         sys.exit(1)
